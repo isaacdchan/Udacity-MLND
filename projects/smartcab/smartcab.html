@@ -13533,8 +13533,8 @@ VeIEy8zMzMzMrEqcYJmZmZmZmVWJEywzMzMzM7MqcYJlZmZmZmZWJU6wzMzMzMzMquT/AyUannTz
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>1) In order of importance for safety, I would pick oncoming, left/right, light, waypoint/deadline. The most likely scenario for a crash is in an intersection, which is why I picked oncoming first. The reason I didn't put light first is because even if the light is red and there are no oncoming cars, it would theoretically be safe to go. Even f the light was green, it would still be unsafe if an oncoming car ran the red. Left traffic is important because if turning right on a red light, it's important to see if traffic from the left is going forward. Light is not as important as the existance of actual cars, and then waypoint and deadline are almost irrelevant for safety.</p>
-<p>2) For safety and efficiency, given that crashing and dying is very inefficient, we should probably place waypoint closer to the front. I would actually leave deadline given that deadline and finding the most efficient route is not related. If your deadline was 1000 moves but the most efficient path takes only 5 moves, there's no need to panic. On the other hand, if your deadline is 4 moves, you're screwed. If I had to pick, I would choose waypoint, oncoming, and light.</p>
+<p>1) In order of importance for safety, I would pick oncoming, left/right, light, waypoint/deadline. The most likely scenario for a crash is in an intersection, which is why I picked oncoming first. The reason I didn't put light first is because even if the light is red and there are no oncoming cars, it would theoretically be safe to go, but not legal. Even f the light was green, it would still be unsafe if an oncoming car ran the red. Left traffic is important because if turning right on a red light, it's important to see if traffic from the left is going forward. Light is not as important as the existance of actual cars, and then waypoint and deadline are almost irrelevant for safety.</p>
+<p>2) For safety and efficiency, given that crashing and dying is very inefficient, we should probably place waypoint closer to the front. I would actually leave deadline given that deadline and finding the most efficient route is not related. If your deadline was 1000 moves but the most efficient path takes only 5 moves, there's no need to panic. On the other hand, if your deadline is 4 moves, you're screwed. If I had to pick, I would choose waypoint, oncoming, left, and light. I did not pick right traffic because per US traffic laws traffic coming from the "right" would be on the other side of the lane.</p>
 
 </div>
 </div>
@@ -13565,8 +13565,8 @@ VeIEy8zMzMzMrEqcYJmZmZmZmVWJEywzMzMzM7MqcYJlZmZmZmZWJU6wzMzMzMzMquT/AyUannTz
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>1) Light has two variables: green/red. Oncoming has four variables: left/right/forward/none. Waypoint has three variables: left/right/forward
-2) 2 <em> 4 </em> 3 = 24. 24 states seems low for a Q learner.</p>
+<p>1) Light has two variables: green/red. Oncoming has four variables: left/right/forward/none. Left has four variables: left/right/forward/none. Waypoint has three variables: left/right/forward
+2) 2 <em> 4 </em> 4 * 3 = 96.964 states is not unreasonable for a Q learner.</p>
 
 </div>
 </div>
@@ -14834,10 +14834,10 @@ cYJlZmZmZmZWI/8Pnlc4UDSACJgAAAAASUVORK5CYII=
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <p>1) One similarity between the basic driving agent and the default Q-learning agent is that they're both very unreliable. Additionally, the minor violation and total bad actions percentage ended up at around the same percentage.</p>
-<p>2) The driving agent required about 200 trilas before testing. Given my epsilon decay function, my starting epsilon value of 1, and my threshold of 0.5, it makes sense.</p>
+<p>2) The driving agent required about 20 trilas before testing. Given my epsilon decay function, my starting epsilon value of 1, and my threshold of 0.5, it makes sense.</p>
 <p>3) The decay function makes sense as it steadily decreases as trials goes on</p>
 <p>4) Quite the contrary. As training trials increased, the total bad action percentage actually increased, much to my chagrin</p>
-<p>5) Originally, safety and reliability both earned F's. Currently, Reliability still has an F, but safety has upgraded to a B.</p>
+<p>5) Originally, safety and reliability both earned F's. Currently, they both still have F's which make sense given such few training training trials.</p>
 
 </div>
 </div>
@@ -16737,8 +16737,8 @@ AABJRU5ErkJggg==
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>1) The decaying function I used was the one initially described above except 10 times longer. It is a linear decaying function where after each trial epsilon decreases by 0.005 instead of 0.05</p>
-<p>2) Just like the basic agent, it took about 2000 trials</p>
+<p>1) The decaying function I used is the same linear decaying function I used originally except after each trial epsilon decreases by 0.005 instead of 0.05</p>
+<p>2) It took about 200 trials</p>
 <p>3) I used the default epsilon tolerance of 0.05 and the default learning rate of 0.5. I was able to receive high grades in reliability and safety without needing to fiddle with them. They were the exact same as my basic learner.</p>
 <p>4) If the first guy was a blind man with no arms and legs, and the second guy was the same blind man kept you safer by never leaving his driveway, then the third guy is the son of Dale Earnhardt Jr. and Lightnight McQueen.</p>
 <p>5) With almost 0% bad actions and a consistent positive reward, yeah I'd say that my driving agent learned an appropriate policy.</p>
@@ -16783,7 +16783,7 @@ AABJRU5ErkJggg==
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <p>1) In the beginning I stated that I thought that the light feature was not as important as the oncoming feature. My justification was that it is more likely that you will hit a car while crossing an intersection the light is red and there isn't oncoming traffic than if the light is green and there is oncoming traffic (mistake). I think I over estimated the human factor and thought that there'd be a lot more dummy errors that our agent had to deal with.</p>
-<p>1) Knowing this, I would say my optimal policy is "if light is green and waypoint is forward/right, go forward/right. If light is red and waypoint is forward or left, None. If light is red and waypoint is right and left is None/forward, right/None. If light is gren and waypoint is left, left. All other actions given the the waypoint and light should result in a negative reward. Simplified to, when safe and legal, have your direction match your waypoint.</p>
+<p>1) Knowing this, I would say my optimal policy is "if light is green and waypoint is forward/right, go forward/right. If light is red and waypoint is forward or left, None. If light is red and waypoint is right and left is None/forward, right/None. If light is gren and waypoint is left, and oncoming is None, left. All other actions given the the waypoint and light should result in a negative reward. Simplified to, when safe and legal, have your direction match your waypoint.</p>
 <p>2) For each state that has been recorded from the simulation, the policy is not always correct. There are states where the policy is incorrect</p>
 <p>3) 
 In this situation, the waypoint is left, the light is green, oncoming traffic is left, and left traffic is none. The highest value is left which is correct.
@@ -16799,7 +16799,7 @@ In this situation, the waypoint is left, the light is green, oncoming traffic is
  -- None : -2.05
  -- left : -9.73</p>
 <p>4)</p>
-<p>The optimal policy was not learned in this scenario because despite wanting to go forward and given the greenlight to do so the highest value was to go left, not forward. I think the agent didn't learn the optimal policy in this state because oncoming traffic was also going left surprisingly enough (maybe it was a left turn yield situation or a mistake). In order to avoid the dummy car, it opted to turn left and match the oncoming traffic.</p>
+<p>The optimal policy was not learned in this scenario because despite wanting to go forward and given the greenlight to do so the highest value was to go left, not forward. I think the agent didn't learn the optimal policy in this state because given that the reward for the forward action is 0.0, it means that the agent never even took the optimal policy and didn't learn the appropriate reward. Next time we can adjust the training trials and exploration rate.</p>
 <p>('forward', 'green', 'left', 'forward')
  -- forward : 0.00
  -- right : 0.31
