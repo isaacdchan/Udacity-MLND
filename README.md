@@ -1,6 +1,6 @@
 ## Udacity Machine Learning Engineer Nanodegree Projects
 
-Projects are written in Python 2.7, using Jupyter Notebooks. My capstone project uses computer vision and k-means clustering to create a classifier that can detect and classify objects within a video game environment.
+Projects are written in Python 2.7, using Jupyter Notebooks. My capstone project uses computer vision and k-means clustering to create a classifier that can detect and classify objects within a video game environment. To view project, navigate to my MLND-Capstone-Submission repo.
 
 ### Course Description
 
